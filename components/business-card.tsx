@@ -12,7 +12,7 @@ export function BusinessCard() {
   const [showQR, setShowQR] = useState(false)
 
   const handleCall = () => {
-    window.location.href = "tel:+1234567890"
+    window.location.href = "tel:+251913808646";
   }
 
   const handleEmail = () => {
