@@ -1,39 +1,48 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Phone, Mail, MessageCircle, Globe, Linkedin, Instagram, QrCode, Download } from "lucide-react"
-import { QRCodeGenerator } from "@/components/qr-code-generator"
-import { ThemeToggle } from "@/components/theme-toggle"
-import Image from "next/image"
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Phone,
+  Mail,
+  MessageCircle,
+  Globe,
+  Linkedin,
+  Instagram,
+  QrCode,
+  Download,
+} from "lucide-react";
+import { QRCodeGenerator } from "@/components/qr-code-generator";
+import { ThemeToggle } from "@/components/theme-toggle";
+import Image from "next/image";
 
 export function BusinessCard() {
-  const [showQR, setShowQR] = useState(false)
+  const [showQR, setShowQR] = useState(false);
 
   const handleCall = () => {
     window.location.href = "tel:+251913808646";
-  }
+  };
 
   const handleEmail = () => {
-    window.location.href = "mailto:samrawit@diddesign.com"
-  }
+    window.location.href = "mailto:samrawit@diddesign.com";
+  };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/+251913808646", "_blank")
-  }
+    window.open("https://wa.me/+251913808646", "_blank");
+  };
 
   const handleWebsite = () => {
-    window.open("https://diddesign.com", "_blank")
-  }
+    window.open("https://diddesign.com", "_blank");
+  };
 
   const handleLinkedIn = () => {
-    window.open("https://linkedin.com/in/samrawit-getachew", "_blank")
-  }
+    window.open("https://linkedin.com/in/samrawit-getachew", "_blank");
+  };
 
   const handleInstagram = () => {
-    window.open("https://instagram.com/diddesign", "_blank")
-  }
+    window.open("https://instagram.com/diddesign", "_blank");
+  };
 
   const saveContact = () => {
     const vCard = `BEGIN:VCARD
@@ -41,19 +50,21 @@ VERSION:3.0
 FN:Samrawit Getachew
 ORG:DID – Design Detailing TM
 TITLE:General Manager
-TEL:+1234567890
+TEL;TYPE=CELL:+251913808646
 EMAIL:samrawit@diddesign.com
 URL:https://diddesign.com
-END:VCARD`
+END:VCARD`;
 
-    const blob = new Blob([vCard], { type: "text/vcard" })
-    const url = window.URL.createObjectURL(blob)
-    const link = document.createElement("a")
-    link.href = url
-    link.download = "samrawit-getachew.vcf"
-    link.click()
-    window.URL.revokeObjectURL(url)
-  }
+    const blob = new Blob([vCard], { type: "text/vcard" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "samrawit-getachew.vcf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="w-full max-w-md mx-auto animate-fade-in-up">
@@ -84,16 +95,26 @@ END:VCARD`
             </div>
 
             <div className="space-y-1">
-              <h1 className="font-serif text-2xl font-bold text-foreground tracking-wide">DID – Design Detailing</h1>
-              <div className="text-xs text-muted-foreground font-medium tracking-widest">TM</div>
+              <h1 className="font-serif text-2xl font-bold text-foreground tracking-wide">
+                DID – Design Detailing
+              </h1>
+              <div className="text-xs text-muted-foreground font-medium tracking-widest">
+                TM
+              </div>
             </div>
 
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-4" />
 
             <div className="space-y-2">
-              <h2 className="font-serif text-xl text-foreground">Samrawit Getachew</h2>
-              <p className="text-sm text-muted-foreground font-medium">General Manager</p>
-              <p className="text-xs text-muted-foreground italic">Experts in premium design detailing solutions</p>
+              <h2 className="font-serif text-xl text-foreground">
+                Samrawit Getachew
+              </h2>
+              <p className="text-sm text-muted-foreground font-medium">
+                General Manager
+              </p>
+              <p className="text-xs text-muted-foreground italic">
+                Experts in premium design detailing solutions
+              </p>
             </div>
           </div>
 
@@ -207,5 +228,5 @@ END:VCARD`
         <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 animate-shimmer pointer-events-none" />
       </Card>
     </div>
-  )
+  );
 }
