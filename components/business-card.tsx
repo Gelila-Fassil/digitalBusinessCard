@@ -202,9 +202,27 @@ export function BusinessCard() {
             </Button>
           </div>
 
-          {/* ...existing code... */}
-
-          {/* QR Code Section Removed */}
+          {/* QR Code Section */}
+          <div className="space-y-3">
+            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+            
+            <div className="flex items-center justify-center">
+              <div className="flex items-center gap-3">
+                <QRCodeGenerator />
+                <div className="text-center">
+                  <Button
+                    onClick={saveContact}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 hover:bg-accent hover:scale-105 transition-all duration-200 bg-transparent"
+                  >
+                    <Download className="h-4 w-4" />
+                    <span className="text-xs">Save Contact</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Subtle shimmer effect on hover */}
