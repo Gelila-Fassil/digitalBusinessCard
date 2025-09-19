@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,23 +48,36 @@ export function BusinessCard() {
   const saveContact = () => {
     const vCard = `BEGIN:VCARD\nVERSION:3.0\nFN:Samrawit Getachew\nORG:DID – Design Detailing TM\nTITLE:General Manager\nTEL;TYPE=CELL:+251913808646\nEMAIL:samrawit@diddesign.com\nURL:https://diddesign.com\nEND:VCARD`;
 
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !("MSStream" in window);
-    const blob = new Blob([vCard], { type: "text/vcard" });
-    const url = window.URL.createObjectURL(blob);
-
-    if (isIOS) {
-      // iOS: open the vCard in a new tab, which triggers import
-      window.location.href = url;
-    } else {
-      // Android and others: force download
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "samrawit-getachew.vcf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !("MSStream" in window);
+    let success = false;
+    try {
+      if (isIOS) {
+        // iOS: Use data URL for best compatibility
+        const vCardDataUrl = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCard)}`;
+        window.location.href = vCardDataUrl;
+        success = true;
+      } else {
+        // Android and others: force download
+        const blob = new Blob([vCard], { type: "text/vcard" });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "samrawit-getachew.vcf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+        success = true;
+      }
+    } catch (e) {
+      success = false;
     }
+    toast({
+      title: success ? "Contact Saved" : "Action Required",
+      description: success
+        ? "Contact card has been saved or opened. Please confirm import on your device."
+        : "Could not save contact automatically. Please try again or use a different browser/device.",
+    });
   };
 
   return (
