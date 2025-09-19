@@ -46,38 +46,85 @@ export function BusinessCard() {
   };
 
   const saveContact = () => {
-    const vCard = `BEGIN:VCARD\nVERSION:3.0\nFN:Samrawit Getachew\nORG:DID – Design Detailing TM\nTITLE:General Manager\nTEL;TYPE=CELL:+251913808646\nEMAIL:samrawit@diddesign.com\nURL:https://diddesign.com\nEND:VCARD`;
+    // Improved vCard format with better compatibility
+    const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Samrawit Getachew
+N:Getachew;Samrawit;;;
+ORG:DID – Design Detailing TM
+TITLE:General Manager
+TEL:+251913808646
+TEL;TYPE=CELL:+251913808646
+EMAIL:samrawit@diddesign.com
+URL:https://diddesign.com
+NOTE:Experts in premium design detailing solutions
+END:VCARD`;
 
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !("MSStream" in window);
+    const isAndroid = /Android/.test(navigator.userAgent);
     let success = false;
+    
     try {
       if (isIOS) {
         // iOS: Use data URL for best compatibility
         const vCardDataUrl = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCard)}`;
         window.location.href = vCardDataUrl;
         success = true;
+      } else if (isAndroid) {
+        // Android: Try Web Share API first, fallback to download
+        if (navigator.share) {
+          navigator.share({
+            title: 'Samrawit Getachew Contact',
+            text: 'Contact information for Samrawit Getachew',
+            files: [new File([vCard], 'samrawit-getachew.vcf', { type: 'text/vcard' })]
+          }).then(() => {
+            success = true;
+            toast({
+              title: "Contact Shared",
+              description: "Contact has been shared. Please save it to your contacts.",
+            });
+          }).catch(() => {
+            // Fallback to download
+            downloadVCard(vCard);
+            success = true;
+          });
+        } else {
+          downloadVCard(vCard);
+          success = true;
+        }
       } else {
-        // Android and others: force download
-        const blob = new Blob([vCard], { type: "text/vcard" });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "samrawit-getachew.vcf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
+        // Desktop and others: force download
+        downloadVCard(vCard);
         success = true;
       }
     } catch (e) {
+      console.error('Error saving contact:', e);
       success = false;
     }
-    toast({
-      title: success ? "Contact Saved" : "Action Required",
-      description: success
-        ? "Contact card has been saved or opened. Please confirm import on your device."
-        : "Could not save contact automatically. Please try again or use a different browser/device.",
-    });
+    
+    if (success && !isAndroid) {
+      toast({
+        title: "Contact Saved",
+        description: "Contact card has been saved or opened. Please confirm import on your device.",
+      });
+    } else if (!success) {
+      toast({
+        title: "Action Required",
+        description: "Could not save contact automatically. Please try again or use a different browser/device.",
+      });
+    }
+  };
+
+  const downloadVCard = (vCard: string) => {
+    const blob = new Blob([vCard], { type: "text/vcard;charset=utf-8" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "samrawit-getachew.vcf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
