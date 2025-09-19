@@ -202,21 +202,7 @@ export function BusinessCard() {
             </Button>
           </div>
 
-          {/* Action Button: Save Contact Centered */}
-          <div className="space-y-3">
-            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-            <div className="flex justify-center">
-              <Button
-                onClick={saveContact}
-                variant="default"
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-200"
-              >
-                <Download className="h-4 w-4 mr-2" />
-                <span className="text-xs">Save Contact</span>
-              </Button>
-            </div>
-          </div>
+          {/* ...existing code... */}
 
           {/* QR Code Section Removed */}
         </div>
