@@ -45,25 +45,25 @@ export function BusinessCard() {
   };
 
   const saveContact = () => {
-    const vCard = `BEGIN:VCARD
-VERSION:3.0
-FN:Samrawit Getachew
-ORG:DID – Design Detailing TM
-TITLE:General Manager
-TEL;TYPE=CELL:+251913808646
-EMAIL:samrawit@diddesign.com
-URL:https://diddesign.com
-END:VCARD`;
+    const vCard = `BEGIN:VCARD\nVERSION:3.0\nFN:Samrawit Getachew\nORG:DID – Design Detailing TM\nTITLE:General Manager\nTEL;TYPE=CELL:+251913808646\nEMAIL:samrawit@diddesign.com\nURL:https://diddesign.com\nEND:VCARD`;
 
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !("MSStream" in window);
     const blob = new Blob([vCard], { type: "text/vcard" });
     const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "samrawit-getachew.vcf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
+
+    if (isIOS) {
+      // iOS: open the vCard in a new tab, which triggers import
+      window.location.href = url;
+    } else {
+      // Android and others: force download
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "samrawit-getachew.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    }
   };
 
   return (
@@ -188,21 +188,10 @@ END:VCARD`;
             </Button>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Button: Save Contact Centered */}
           <div className="space-y-3">
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-            <div className="grid grid-cols-2 gap-3">
-              <Button
-                onClick={() => setShowQR(!showQR)}
-                variant="outline"
-                size="sm"
-                className="hover:bg-accent hover:scale-105 transition-all duration-200"
-              >
-                <QrCode className="h-4 w-4 mr-2" />
-                <span className="text-xs">QR Code</span>
-              </Button>
-
+            <div className="flex justify-center">
               <Button
                 onClick={saveContact}
                 variant="default"
@@ -215,13 +204,7 @@ END:VCARD`;
             </div>
           </div>
 
-          {/* QR Code Section */}
-          {showQR && (
-            <div className="animate-fade-in-up">
-              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-4" />
-              <QRCodeGenerator />
-            </div>
-          )}
+          {/* QR Code Section Removed */}
         </div>
 
         {/* Subtle shimmer effect on hover */}
