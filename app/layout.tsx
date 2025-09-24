@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={`font-sans ${playfairDisplay.variable} ${openSans.variable}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem={false}
           storageKey="business-card-theme"
           disableTransitionOnChange={false}
