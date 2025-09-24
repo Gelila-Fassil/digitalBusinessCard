@@ -186,7 +186,7 @@ END:VCARD`;
                 <div className="absolute -inset-1 bg-gradient-to-r from-black via-gray-800 to-black rounded-full blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-white/20 shadow-2xl backdrop-blur-sm">
                   <Image
-                    src="/professional-headshot-of-samrawit-getachew--busine.jpg"
+                    src="samri.jpg"
                     alt="Samrawit Getachew"
                     width={112}
                     height={112}
