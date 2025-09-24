@@ -351,6 +351,15 @@ END:VCARD`;
               </div>
             </div>
           </div>
+          
+          {/* Developer Credit */}
+          <div className="text-center mt-3 pt-2 border-t border-white/10">
+            <p className="text-white/50 text-[10px]">
+              Developed by <span className="text-white/70 font-medium">Gelila Fassil</span> • 
+              <a href="tel:+251962464070" className="hover:text-white/70 transition-colors duration-200 ml-1">+251 962464070</a> • 
+              <a href="mailto:gelilafassil659@gmail.com" className="hover:text-white/70 transition-colors duration-200 ml-1">gelilafassil659@gmail.com</a>
+            </p>
+          </div>
         </div>
 
         {/* Enhanced shimmer effect */}
