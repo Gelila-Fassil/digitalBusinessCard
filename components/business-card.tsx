@@ -156,7 +156,7 @@ END:VCARD`;
           <div className="text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
               <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-              <span className="text-white text-xs font-medium tracking-wider">DID DESIGN DETALING</span>
+              <span className="text-white text-xs font-medium tracking-wider">DID DESIGN IN DETAIL</span>
               <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
             </div>
           </div>
@@ -199,7 +199,7 @@ END:VCARD`;
             <div className="space-y-1">
               <div className="flex items-center justify-center gap-2">
                 <h1 className="font-serif text-xl font-bold text-foreground tracking-wide">
-                  DID – Design Detailing
+                  DID – DID DESIGN IN DETAIL
                 </h1>
               </div>
               <div className="text-xs text-foreground/70 font-medium tracking-widest">
@@ -352,7 +352,7 @@ END:VCARD`;
                     <div className="p-1 rounded bg-gradient-to-r from-white/30 to-white/20 group-hover:from-white/40 group-hover:to-white/30 transition-all duration-300">
                       <Download className="h-3 w-3 text-white" />
                     </div>
-                    <span className="text-xs font-medium">Save Contact</span>
+                    <span className="text-xs font-medium">Share Contact</span>
                   </Button>
                 </div>
               </div>
