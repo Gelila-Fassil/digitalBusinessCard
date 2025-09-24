@@ -52,12 +52,10 @@ export function BusinessCard() {
     let success = false;
     try {
       if (isIOS) {
-        // iOS: Use data URL for best compatibility
         const vCardDataUrl = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCard)}`;
         window.location.href = vCardDataUrl;
         success = true;
       } else {
-        // Android and others: force download
         const blob = new Blob([vCard], { type: "text/vcard" });
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -72,12 +70,14 @@ export function BusinessCard() {
     } catch (e) {
       success = false;
     }
-    toast({
-      title: success ? "Contact Saved" : "Action Required",
-      description: success
-        ? "Contact card has been saved or opened. Please confirm import on your device."
-        : "Could not save contact automatically. Please try again or use a different browser/device.",
-    });
+    if (typeof toast === 'function') {
+      toast({
+        title: success ? "Contact Saved" : "Action Required",
+        description: success
+          ? "Contact card has been saved or opened. Please confirm import on your device."
+          : "Could not save contact automatically. Please try again or use a different browser/device.",
+      });
+    }
   };
 
   return (
@@ -107,7 +107,6 @@ export function BusinessCard() {
                 />
               </div>
             </div>
-
             <div className="space-y-1">
               <h1 className="font-serif text-2xl font-bold text-foreground tracking-wide">
                 DID – Design Detailing
@@ -116,9 +115,7 @@ export function BusinessCard() {
                 TM
               </div>
             </div>
-
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-4" />
-
             <div className="space-y-2">
               <h2 className="font-serif text-xl text-foreground">
                 Samrawit Getachew
@@ -143,7 +140,6 @@ export function BusinessCard() {
               <Phone className="h-4 w-4" />
               <span className="text-xs">Call</span>
             </Button>
-
             <Button
               onClick={handleEmail}
               variant="outline"
@@ -153,7 +149,6 @@ export function BusinessCard() {
               <Mail className="h-4 w-4" />
               <span className="text-xs">Email</span>
             </Button>
-
             <Button
               onClick={handleWhatsApp}
               variant="outline"
@@ -168,7 +163,6 @@ export function BusinessCard() {
           {/* Links Section */}
           <div className="space-y-3">
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
             <div className="grid grid-cols-2 gap-3">
               <Button
                 onClick={handleWebsite}
@@ -179,7 +173,6 @@ export function BusinessCard() {
                 <Globe className="h-4 w-4 mr-2" />
                 <span className="text-xs">Website</span>
               </Button>
-
               <Button
                 onClick={handleLinkedIn}
                 variant="ghost"
@@ -190,7 +183,6 @@ export function BusinessCard() {
                 <span className="text-xs">LinkedIn</span>
               </Button>
             </div>
-
             <Button
               onClick={handleInstagram}
               variant="ghost"
@@ -218,7 +210,8 @@ export function BusinessCard() {
             </div>
           </div>
 
-          {/* QR Code Section Removed */}
+          {/* QR Code Section */}
+          {showQR && <QRCodeGenerator />}
         </div>
 
         {/* Subtle shimmer effect on hover */}
