@@ -141,29 +141,18 @@ END:VCARD`;
   return (
     <div className="w-full max-w-md mx-auto animate-fade-in-up">
       <Card 
-        className="relative overflow-hidden bg-gradient-to-br from-card via-card/95 to-card/90 border-border/50 shadow-2xl backdrop-blur-xl"
+        className="relative overflow-hidden bg-gradient-to-br from-card via-card/95 to-card/90 border-border/50 shadow-2xl backdrop-blur-xl p-0"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
           background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.1) 0%, transparent 50%)`,
         }}
       >
-        <div className="absolute top-4 right-4 z-10">
-          <ThemeToggle />
-        </div>
-
-        {/* Static Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Geometric patterns with black/white gradients */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-black/10 to-transparent transform rotate-45 translate-x-16 -translate-y-16 rounded-full blur-sm" />
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tl from-white/10 to-transparent transform rotate-45 -translate-x-12 translate-y-12 rounded-full blur-sm" />
-          
-          {/* Shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 animate-shimmer-slow" />
-        </div>
-
-        {/* Header Banner */}
-        <div className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 py-4 px-8">
+        {/* Header Banner - Now positioned at the very top */}
+        <div className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 py-4 px-8 rounded-t-lg">
+          <div className="absolute top-4 right-4 z-10">
+            <ThemeToggle />
+          </div>
           <div className="text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
               <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
@@ -179,10 +168,20 @@ END:VCARD`;
           </div>
         </div>
 
-        <div className="relative p-8 space-y-6">
+        {/* Static Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Geometric patterns with black/white gradients */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-black/10 to-transparent transform rotate-45 translate-x-16 -translate-y-16 rounded-full blur-sm" />
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tl from-white/10 to-transparent transform rotate-45 -translate-x-12 translate-y-12 rounded-full blur-sm" />
+          
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 animate-shimmer-slow" />
+        </div>
+
+        <div className="relative pt-2 px-6 pb-4 space-y-4">
           {/* Header Section */}
-          <div className="text-center space-y-4">
-            <div className="flex justify-center mb-6">
+          <div className="text-center space-y-3">
+            <div className="flex justify-center">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-black via-gray-800 to-black rounded-full blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-white/20 shadow-2xl backdrop-blur-sm">
@@ -197,9 +196,9 @@ END:VCARD`;
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               <div className="flex items-center justify-center gap-2">
-                <h1 className="font-serif text-2xl font-bold text-foreground tracking-wide">
+                <h1 className="font-serif text-xl font-bold text-foreground tracking-wide">
                   DID – Design Detailing
                 </h1>
               </div>
@@ -208,13 +207,13 @@ END:VCARD`;
               </div>
             </div>
 
-            <div className="relative my-6">
+            <div className="relative my-3">
               <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
               <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-gradient-to-r from-gray-600 to-gray-800 rounded-full" />
             </div>
 
-            <div className="space-y-3">
-              <h2 className="font-serif text-xl font-semibold text-foreground">
+            <div className="space-y-2">
+              <h2 className="font-serif text-lg font-semibold text-foreground">
                 Samrawit Getachew
               </h2>
               <div className="flex items-center justify-center gap-2">
@@ -229,12 +228,12 @@ END:VCARD`;
           </div>
 
           {/* Contact Actions */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-3">
             <Button
               onClick={handleCall}
               variant="outline"
               size="sm"
-              className="group flex flex-col items-center gap-2 h-auto py-4 hover:bg-gradient-to-br hover:from-gray-50 hover:to-gray-100 dark:hover:from-gray-800/20 dark:hover:to-gray-700/20 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-white/20"
+              className="group flex flex-col items-center gap-1 h-auto py-3 hover:bg-gradient-to-br hover:from-gray-50 hover:to-gray-100 dark:hover:from-gray-800/20 dark:hover:to-gray-700/20 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-white/20"
             >
               <div className="p-2 rounded-full bg-gradient-to-r from-gray-600 to-gray-800 group-hover:from-gray-500 group-hover:to-gray-700 transition-all duration-300">
                 <Phone className="h-4 w-4 text-white" />
@@ -246,7 +245,7 @@ END:VCARD`;
               onClick={handleEmail}
               variant="outline"
               size="sm"
-              className="group flex flex-col items-center gap-2 h-auto py-4 hover:bg-gradient-to-br hover:from-gray-50 hover:to-gray-100 dark:hover:from-gray-800/20 dark:hover:to-gray-700/20 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-white/20"
+              className="group flex flex-col items-center gap-1 h-auto py-3 hover:bg-gradient-to-br hover:from-gray-50 hover:to-gray-100 dark:hover:from-gray-800/20 dark:hover:to-gray-700/20 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-white/20"
             >
               <div className="p-2 rounded-full bg-gradient-to-r from-gray-600 to-gray-800 group-hover:from-gray-500 group-hover:to-gray-700 transition-all duration-300">
                 <Mail className="h-4 w-4 text-white" />
@@ -258,7 +257,7 @@ END:VCARD`;
               onClick={handleWhatsApp}
               variant="outline"
               size="sm"
-              className="group flex flex-col items-center gap-2 h-auto py-4 hover:bg-gradient-to-br hover:from-gray-50 hover:to-gray-100 dark:hover:from-gray-800/20 dark:hover:to-gray-700/20 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-white/20"
+              className="group flex flex-col items-center gap-1 h-auto py-3 hover:bg-gradient-to-br hover:from-gray-50 hover:to-gray-100 dark:hover:from-gray-800/20 dark:hover:to-gray-700/20 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-white/20"
             >
               <div className="p-2 rounded-full bg-gradient-to-r from-gray-600 to-gray-800 group-hover:from-gray-500 group-hover:to-gray-700 transition-all duration-300">
                 <MessageCircle className="h-4 w-4 text-white" />
@@ -268,7 +267,7 @@ END:VCARD`;
           </div>
 
           {/* Links Section */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="relative">
               <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
               <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-gradient-to-r from-gray-600 to-gray-800 rounded-full" />
@@ -313,18 +312,33 @@ END:VCARD`;
             </Button>
           </div>
 
+        </div>
+
+        {/* Interactive Footer */}
+        <div className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 py-4 px-6 rounded-b-lg border-t border-white/10">
+          {/* Footer decorative elements */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+            <div className="absolute top-1/4 left-1/3 w-1 h-1 bg-white/20 rounded-full"></div>
+            <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-white/30 rounded-full"></div>
+            <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-white/10 rounded-full"></div>
+            <div className="absolute top-1/3 right-1/2 w-0.5 h-0.5 bg-white/25 rounded-full"></div>
+          </div>
+
           {/* QR Code Section */}
-          <div className="space-y-4">
-            <div className="relative">
-              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-gradient-to-r from-gray-600 to-gray-800 rounded-full" />
+          <div className="space-y-3">
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/20 mb-2">
+                <div className="w-1 h-1 bg-white rounded-full animate-pulse"></div>
+                <span className="text-white text-xs font-medium tracking-wider">SCAN TO CONNECT</span>
+                <div className="w-1 h-1 bg-white rounded-full animate-pulse"></div>
+              </div>
             </div>
             
             <div className="flex items-center justify-center">
               <div className="flex items-center gap-4">
                 <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-gray-600 to-gray-800 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-                  <div className="relative bg-white/80 dark:bg-black/80 backdrop-blur-sm rounded-lg p-2">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-white/10 rounded-lg blur opacity-50 group-hover:opacity-70 transition duration-300"></div>
+                  <div className="relative bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                     <QRCodeGenerator />
                   </div>
                 </div>
@@ -333,12 +347,12 @@ END:VCARD`;
                     onClick={saveContact}
                     variant="outline"
                     size="sm"
-                    className="group flex items-center gap-2 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 dark:hover:from-gray-800/20 dark:hover:to-gray-700/20 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-white/20"
+                    className="group flex items-center gap-2 hover:bg-gradient-to-r hover:from-white/20 hover:to-white/10 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white/20 backdrop-blur-sm border-white/30 text-white hover:text-white"
                   >
-                    <div className="p-1 rounded bg-gradient-to-r from-gray-600 to-gray-800 group-hover:from-gray-500 group-hover:to-gray-700 transition-all duration-300">
+                    <div className="p-1 rounded bg-gradient-to-r from-white/30 to-white/20 group-hover:from-white/40 group-hover:to-white/30 transition-all duration-300">
                       <Download className="h-3 w-3 text-white" />
                     </div>
-                    <span className="text-xs font-medium text-foreground">Save Contact</span>
+                    <span className="text-xs font-medium">Save Contact</span>
                   </Button>
                 </div>
               </div>

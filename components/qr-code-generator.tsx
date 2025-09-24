@@ -7,7 +7,7 @@ export function QRCodeGenerator() {
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(businessCardUrl)}`
 
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className="flex flex-col items-center">
       <div className="p-2 bg-white rounded-lg shadow-sm border border-border/20">
         <img
           src={qrCodeUrl}
@@ -17,9 +17,6 @@ export function QRCodeGenerator() {
           className="rounded-sm"
         />
       </div>
-      <p className="text-xs text-muted-foreground text-center leading-tight">
-        Scan QR code<br />to view card
-      </p>
     </div>
   )
 }
