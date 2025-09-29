@@ -53,7 +53,7 @@ export function BusinessCard() {
   };
 
   const handleInstagram = () => {
-    window.open("https://instagram.com/diddesign", "_blank");
+    window.open("https://www.instagram.com/didarchitects?igsh=ZGJxM2h6eXo3M29u", "_blank");
   };
 
   const saveContact = () => {
@@ -222,7 +222,7 @@ END:VCARD`;
                 </p>
               </div>
               <p className="text-xs text-muted-foreground italic bg-gradient-to-r from-muted-foreground to-muted-foreground/70 bg-clip-text text-transparent">
-                Experts in premium design detailing solutions
+              Experts in premium design and implementation , project management
               </p>
             </div>
           </div>
@@ -356,6 +356,13 @@ END:VCARD`;
                   </Button>
                 </div>
               </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="text-center mt-3">
+              <p className="text-white/40 text-[10px] font-medium">
+                Want this? Contact: +251 962464070 • gelilafassil659@gmail.com
+              </p>
             </div>
           </div>
         </div>
