@@ -352,11 +352,7 @@ END:VCARD`;
             </div>
 
             {/* Contact Info */}
-            <div className="text-center mt-3">
-              <p className="text-white/40 text-[10px] font-medium">
-                Want this? Contact: +251 962464070 • gelilafassil659@gmail.com
-              </p>
-            </div>
+            
           </div>
           
           {/* Developer Credit */}
