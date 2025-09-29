@@ -77,7 +77,6 @@ END:VCARD`;
     
     try {
       if (isIOS) {
-        // iOS: Use data URL for best compatibility
         const vCardDataUrl = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCard)}`;
         window.location.href = vCardDataUrl;
         success = true;
@@ -195,7 +194,6 @@ END:VCARD`;
                 </div>
               </div>
             </div>
-
             <div className="space-y-1">
               <div className="flex items-center justify-center gap-2">
                 <h1 className="font-serif text-xl font-bold text-foreground tracking-wide">
@@ -240,7 +238,6 @@ END:VCARD`;
               </div>
               <span className="text-xs font-medium text-foreground">Call</span>
             </Button>
-
             <Button
               onClick={handleEmail}
               variant="outline"
@@ -252,7 +249,6 @@ END:VCARD`;
               </div>
               <span className="text-xs font-medium text-foreground">Email</span>
             </Button>
-
             <Button
               onClick={handleWhatsApp}
               variant="outline"
@@ -285,7 +281,6 @@ END:VCARD`;
                 </div>
                 <span className="text-xs font-medium text-foreground">Website</span>
               </Button>
-
               <Button
                 onClick={handleLinkedIn}
                 variant="ghost"
@@ -298,7 +293,6 @@ END:VCARD`;
                 <span className="text-xs font-medium text-foreground">LinkedIn</span>
               </Button>
             </div>
-
             <Button
               onClick={handleInstagram}
               variant="ghost"
@@ -311,7 +305,6 @@ END:VCARD`;
               <span className="text-xs font-medium text-foreground">Instagram</span>
             </Button>
           </div>
-
         </div>
 
         {/* Interactive Footer */}
@@ -364,6 +357,15 @@ END:VCARD`;
                 Want this? Contact: +251 962464070 • gelilafassil659@gmail.com
               </p>
             </div>
+          </div>
+          
+          {/* Developer Credit */}
+          <div className="text-center mt-3 pt-2 border-t border-white/10">
+            <p className="text-white/50 text-[10px]">
+              Developed by <span className="text-white/70 font-medium">Gelila Fassil</span> • 
+              <a href="tel:+251962464070" className="hover:text-white/70 transition-colors duration-200 ml-1">+251 962464070</a> • 
+              <a href="mailto:gelilafassil659@gmail.com" className="hover:text-white/70 transition-colors duration-200 ml-1">gelilafassil659@gmail.com</a>
+            </p>
           </div>
         </div>
 
